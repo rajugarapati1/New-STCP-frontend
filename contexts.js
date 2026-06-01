@@ -50,7 +50,7 @@ export const SocketProvider = ({ children }) => {
 
   useEffect(() => {
     if (!user || !token) return;
-    const s = io(process.env.REACT_APP_SOCKET_URL || 'http://localhost:5000', { transports: ['websocket'] });
+    const s = io(process.env.REACT_APP_SOCKET_URL || 'https://new-stcp.onrender.com', { transports: ['websocket'] });
     ref.current = s;
     s.on('connect', () => { setConnected(true); s.emit('authenticate', user._id); });
     s.on('disconnect', () => setConnected(false));
